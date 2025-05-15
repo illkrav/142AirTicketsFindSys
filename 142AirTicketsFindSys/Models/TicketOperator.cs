@@ -1,13 +1,13 @@
 using System.Text.Json;
 using System.Windows.Forms;
 
-class TicketOperator
+public class TicketOperator
 {
     public List<Flyway> flyWays;
     public string startCity;
     public TicketOperator(string city)
     {
-        flyWays = new List<Flyway>();
+        this.flyWays = new List<Flyway>();
         startCity = city;
     }
     public void addRoute(int id, string[] route,int places,DateTime startTime,DateTime endTime)
@@ -16,6 +16,10 @@ class TicketOperator
         
         flyWays.Add(new Flyway(id, route, places, startTime, endTime));
         //...
+    }
+    public void delRoute(int id)
+    {
+        flyWays.RemoveAt(id);
     }
     public List<string[]> getSortetPrettyRoutes(string destination)
     {

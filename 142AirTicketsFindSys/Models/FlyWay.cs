@@ -1,4 +1,4 @@
-class Flyway
+public class Flyway
 {
     public int id;
     public string[] route;
@@ -29,7 +29,7 @@ class Flyway
             middle += route[i] + "---";
         }
         middle = middle.Remove(middle.Length - 3,3);
-        return [id.ToString(), route.Last(),middle,places.ToString(),startTime.ToString(),(endTime-startTime).TotalHours.ToString()+"h"];
+        return [id.ToString(), route.Last(),middle,places.ToString(),startTime.ToString(),((int)((endTime-startTime).TotalHours)).ToString()+"h"];
     }
     public string[][] saveData()
     {
