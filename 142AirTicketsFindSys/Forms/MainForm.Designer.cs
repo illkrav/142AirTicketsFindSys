@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            button2 = new Button();
             comboBox1 = new ComboBox();
             button1 = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
-            button2 = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -45,6 +45,15 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(183, 403);
             panel1.TabIndex = 0;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(9, 105);
+            button2.Name = "button2";
+            button2.Size = new Size(165, 32);
+            button2.TabIndex = 2;
+            button2.Text = "Buy";
+            button2.UseVisualStyleBackColor = true;
             // 
             // comboBox1
             // 
@@ -67,27 +76,20 @@
             // 
             // tableLayoutPanel1
             // 
-            tableLayoutPanel1.ColumnCount = 5;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 202F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 192F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 176F));
+            tableLayoutPanel1.AutoScroll = true;
+            tableLayoutPanel1.ColumnCount = 6;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40.39409F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 59.60591F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 187F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 190F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 154F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 129F));
             tableLayoutPanel1.Location = new Point(13, 10);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(996, 413);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.Size = new Size(996, 405);
             tableLayoutPanel1.TabIndex = 1;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(9, 105);
-            button2.Name = "button2";
-            button2.Size = new Size(165, 32);
-            button2.TabIndex = 2;
-            button2.Text = "Buy";
-            button2.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 

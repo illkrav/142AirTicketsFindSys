@@ -15,7 +15,9 @@ namespace _142AirTicketsFindSys.Forms
         TicketOperator oprt = new();
         public MainForm()
         {
-            
+            oprt.load("db");
+            //oprt.addRoute(99, ["Абу-Дабе", "ЛБС", "Анкара"], 999, DateTime.Now.AddDays(5), DateTime.Now.AddDays(8));
+            //oprt.save("db");
             InitializeComponent();
         }
 
@@ -27,9 +29,16 @@ namespace _142AirTicketsFindSys.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             var rts = oprt.getPrettyRoutes();
-            foreach(var el in rts)
+            foreach (var el in rts)
             {
-                //tableLayoutPanel1.
+                for (int i = 0; i < el.Length; i++) { 
+                    
+                    var lbl = new Label();
+                    lbl.Width=230;
+                    lbl.Text = el[i];
+                    tableLayoutPanel1.Controls.Add(lbl);
+                }
+                tableLayoutPanel1.RowCount += 1;
             }
         }
     }

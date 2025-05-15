@@ -13,6 +13,14 @@ class Flyway
         this.startTime = startTime;
         this.endTime = endTime;
     }
+    public Flyway(string[][] dt)
+    {
+        this.id = int.Parse(dt[0][0]);
+        this.route = dt[1];
+        this.places = int.Parse(dt[0][1]);
+        this.startTime = DateTime.Parse(dt[0][2]);
+        this.endTime = DateTime.Parse(dt[0][3]);
+    }
     public string[] getPrettyWay()
     {
         string middle = "";
@@ -21,7 +29,11 @@ class Flyway
             middle += route[i] + "-";
         }
         middle = middle.Remove(middle.Length - 1,1);
-        return [id.ToString(), route[0] + "-" + route.Last(),middle,places.ToString(),startTime.ToString(),(endTime-startTime).ToString()];
+        return [id.ToString(), route[0] + "---" + route.Last(),middle,places.ToString(),startTime.ToString(),(endTime-startTime).TotalHours.ToString()+"h"];
     }
-    
+    public string[][] saveData()
+    {
+        return [[id.ToString(),places.ToString(),startTime.ToString(),endTime.ToString()],route];
+    }
+
 }
