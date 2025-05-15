@@ -10,11 +10,27 @@ using System.Windows.Forms;
 
 namespace _142AirTicketsFindSys.Forms
 {
-    public partial class MainForm: Form
+    public partial class MainForm : Form
     {
+        TicketOperator oprt = new();
         public MainForm()
         {
+            
             InitializeComponent();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var rts = oprt.getPrettyRoutes();
+            foreach(var el in rts)
+            {
+                //tableLayoutPanel1.
+            }
         }
     }
 }

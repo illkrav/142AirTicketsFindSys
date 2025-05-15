@@ -11,5 +11,16 @@ class TicketOperator
         flyWays.Add(way);
         //...
     }
+    public string[][] getPrettyRoutes()
+    {
+        string[][] ways = new string[flyWays.Count][];
+        for(int i = 0; i < flyWays.Count; i++)
+        {
+            ways[i] = flyWays[i].getPrettyWay();
+
+        }
+
+        return ways;
+    }
 
 }

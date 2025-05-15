@@ -13,5 +13,15 @@ class Flyway
         this.startTime = startTime;
         this.endTime = endTime;
     }
+    public string[] getPrettyWay()
+    {
+        string middle = "";
+        for(int i = 1; i < route.Length - 1; i++)
+        {
+            middle += route[i] + "-";
+        }
+        middle = middle.Remove(middle.Length - 1,1);
+        return [id.ToString(), route[0] + "-" + route.Last(),middle,places.ToString(),startTime.ToString(),(endTime-startTime).ToString()];
+    }
     
 }
