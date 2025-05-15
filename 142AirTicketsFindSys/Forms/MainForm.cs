@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,7 @@ namespace _142AirTicketsFindSys.Forms
 {
     public partial class MainForm : Form
     {
-        TicketOperator oprt = new();
+        TicketOperator oprt = new("Косово");
         public MainForm()
         {
             oprt.load("db");
@@ -23,12 +24,24 @@ namespace _142AirTicketsFindSys.Forms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            foreach(var el in oprt.flyWays) {
+                foreach(var name in el.route)
+                {
+                    if(comboBox1.Items.IndexOf(name)==-1) comboBox1.Items.Add(name);
+                    
+                }
+                
+                    
+            }
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var rts = oprt.getPrettyRoutes();
+            var rts = oprt.getSortetPrettyRoutes(comboBox1.SelectedItem.ToString());
+            tableLayoutPanel1.Controls.Clear();
+
+
             foreach (var el in rts)
             {
                 for (int i = 0; i < el.Length; i++) { 

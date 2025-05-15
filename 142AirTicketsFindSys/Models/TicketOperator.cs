@@ -4,9 +4,11 @@ using System.Windows.Forms;
 class TicketOperator
 {
     public List<Flyway> flyWays;
-    public TicketOperator()
+    public string startCity;
+    public TicketOperator(string city)
     {
         flyWays = new List<Flyway>();
+        startCity = city;
     }
     public void addRoute(int id, string[] route,int places,DateTime startTime,DateTime endTime)
     {
@@ -15,17 +17,20 @@ class TicketOperator
         flyWays.Add(new Flyway(id, route, places, startTime, endTime));
         //...
     }
-    public string[][] getPrettyRoutes()
+    public List<string[]> getSortetPrettyRoutes(string destination)
     {
-        string[][] ways = new string[flyWays.Count][];
+        List<string[]> ways = new List<string[]>();
         for(int i = 0; i < flyWays.Count; i++)
         {
-            ways[i] = flyWays[i].getPrettyWay();
+            if(Array.IndexOf(flyWays[i].route,destination) ==-1) continue;
+            ways.Add(flyWays[i].getPrettyWay());
+            
 
         }
 
         return ways;
     }
+    
     public void save(string path)
     {
         string[][][] json = new string[flyWays.Count][][];

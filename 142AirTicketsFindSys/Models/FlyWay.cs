@@ -24,12 +24,12 @@ class Flyway
     public string[] getPrettyWay()
     {
         string middle = "";
-        for(int i = 1; i < route.Length - 1; i++)
+        for(int i = 0; i < route.Length - 1; i++)
         {
-            middle += route[i] + "-";
+            middle += route[i] + "---";
         }
-        middle = middle.Remove(middle.Length - 1,1);
-        return [id.ToString(), route[0] + "---" + route.Last(),middle,places.ToString(),startTime.ToString(),(endTime-startTime).TotalHours.ToString()+"h"];
+        middle = middle.Remove(middle.Length - 3,3);
+        return [id.ToString(), route.Last(),middle,places.ToString(),startTime.ToString(),(endTime-startTime).TotalHours.ToString()+"h"];
     }
     public string[][] saveData()
     {
