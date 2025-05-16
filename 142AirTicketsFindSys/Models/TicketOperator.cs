@@ -3,31 +3,32 @@ using System.Windows.Forms;
 
 public class TicketOperator
 {
-    public List<Flyway> flyWays;
+    private List<Flyway> _flyWays;
+    public List<Flyway> flyWays { get { return _flyWays; } }
     public string startCity;
     public TicketOperator(string city)
     {
-        this.flyWays = new List<Flyway>();
+        this._flyWays = new List<Flyway>();
         startCity = city;
     }
     public void addRoute(int id, string[] route,int places,DateTime startTime,DateTime endTime)
     {
 
         
-        flyWays.Add(new Flyway(id, route, places, startTime, endTime));
+        _flyWays.Add(new Flyway(id, route, places, startTime, endTime));
         //...
     }
     public void delRoute(int id)
     {
-        flyWays.RemoveAt(id);
+        _flyWays.RemoveAt(id);
     }
     public List<string[]> getSortetPrettyRoutes(string destination)
     {
         List<string[]> ways = new List<string[]>();
-        for(int i = 0; i < flyWays.Count; i++)
+        for(int i = 0; i < _flyWays.Count; i++)
         {
-            if(Array.IndexOf(flyWays[i].route,destination) ==-1) continue;
-            ways.Add(flyWays[i].getPrettyWay());
+            if(Array.IndexOf(_flyWays[i].route,destination) ==-1) continue;
+            ways.Add(_flyWays[i].getPrettyWay());
             
 
         }
@@ -37,9 +38,9 @@ public class TicketOperator
     
     public void save(string path)
     {
-        string[][][] json = new string[flyWays.Count][][];
+        string[][][] json = new string[_flyWays.Count][][];
         int i = 0;
-        foreach (Flyway el in flyWays)
+        foreach (Flyway el in _flyWays)
         {
             json[i] = el.saveData();
             i++;
@@ -54,10 +55,10 @@ public class TicketOperator
         if(!File.Exists(path + ".json"))return;
         string text = File.ReadAllText(path + ".json");
         var file = JsonSerializer.Deserialize<string[][][]>(text);
-        flyWays.Clear();
+        _flyWays.Clear();
         foreach (var el in file)
         {
-            flyWays.Add(new Flyway(el));
+            _flyWays.Add(new Flyway(el));
         }
 
     }

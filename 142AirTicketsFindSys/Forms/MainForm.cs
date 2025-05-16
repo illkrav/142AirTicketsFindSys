@@ -55,7 +55,8 @@ namespace _142AirTicketsFindSys.Forms
                 {
 
                     var lbl = new Label();
-                    lbl.Width = 230;
+                    //lbl.Width = 230;
+                    lbl.AutoSize = true;
                     lbl.Text = el[i];
                     tableLayoutPanel1.Controls.Add(lbl);
                 }
