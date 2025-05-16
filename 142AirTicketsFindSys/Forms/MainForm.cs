@@ -36,7 +36,7 @@ namespace _142AirTicketsFindSys.Forms
 
             }
             lst = lst.OrderBy(x => x).ToList();
-            foreach(var el in lst)
+            foreach (var el in lst)
             {
                 comboBox1.Items.Add(el);
             }
@@ -74,6 +74,13 @@ namespace _142AirTicketsFindSys.Forms
         {
             oprt.save("db");
             base.OnFormClosed(e);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var dl = new BuyForm();
+            dl.cll = this;
+            dl.ShowDialog(this);
         }
     }
 }
