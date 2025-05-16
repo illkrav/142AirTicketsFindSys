@@ -51,5 +51,10 @@ namespace _142AirTicketsFindSys.Forms
             cll.oprt.delRoute(comboBox1.SelectedIndex);
             recomplList();
         }
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            cll.cityUpd();
+            base.OnFormClosed(e);
+        }
     }
 }

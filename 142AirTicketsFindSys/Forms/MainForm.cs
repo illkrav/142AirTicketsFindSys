@@ -24,6 +24,10 @@ namespace _142AirTicketsFindSys.Forms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            cityUpd();
+        }
+        public void cityUpd()
+        {
             var lst = new List<string>();
             foreach (var el in oprt.flyWays)
             {
@@ -36,11 +40,13 @@ namespace _142AirTicketsFindSys.Forms
 
             }
             lst = lst.OrderBy(x => x).ToList();
+            comboBox1.Items.Clear();
             foreach (var el in lst)
             {
                 comboBox1.Items.Add(el);
             }
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
