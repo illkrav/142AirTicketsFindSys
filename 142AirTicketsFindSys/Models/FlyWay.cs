@@ -31,6 +31,10 @@ public class Flyway
         middle = middle.Remove(middle.Length - 3,3);
         return [id.ToString(), route.Last(),middle,places.ToString(),startTime.ToString(),((int)((endTime-startTime).TotalHours)).ToString()+"h"];
     }
+    public void buyTickets(int amount)
+    {
+        places -= amount;
+    }
     public string[][] saveData()
     {
         return [[id.ToString(),places.ToString(),startTime.ToString(),endTime.ToString()],route];

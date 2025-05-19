@@ -35,6 +35,28 @@ public class TicketOperator
 
         return ways;
     }
+    public List<Flyway> getSortetRoutes(string destination)
+    {
+        List<Flyway> ways = new List<Flyway>();
+        for (int i = 0; i < _flyWays.Count; i++)
+        {
+            if (Array.IndexOf(_flyWays[i].route, destination) == -1) continue;
+            ways.Add(_flyWays[i]);
+
+
+        }
+
+        return ways;
+    }
+    public bool buyTicket(int id,int amount)
+    {
+        if(flyWays[id].places>=amount && amount > 0)
+        {
+            flyWays[id].buyTickets(amount);
+            return true;
+        }
+        return false;
+    }
     
     public void save(string path)
     {

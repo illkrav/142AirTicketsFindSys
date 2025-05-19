@@ -15,17 +15,28 @@ namespace _142AirTicketsFindSys.Forms
         public MainForm cll;
         public BuyForm()
         {
+            
             InitializeComponent();
         }
-
+        public void initRoute()
+        {
+            string ret = "";
+            foreach (var st in cll.oprt.flyWays[cll.selectedWay].getPrettyWay())
+            {
+                ret += st + "|";
+            }
+            label2.Text = ret;
+        }
         private void button1_Click(object sender, EventArgs e)
         {
-
+            cll.oprt.buyTicket(cll.selectedWay, int.Parse(textBox1.Text));
+            cll.updTable();
+            this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
     }
 }
