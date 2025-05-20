@@ -6,10 +6,12 @@ public class TicketOperator
     private List<Flyway> _flyWays;
     public List<Flyway> flyWays { get { return _flyWays; } }
     public string startCity;
+    private string[] randCityAr;
     public TicketOperator(string city)
     {
         this._flyWays = new List<Flyway>();
         startCity = city;
+        randCityAr = ["Анкара","Абу-Даби","Осака","Нью-Дели","Стамбул","Тель-Авів"];
     }
     public void addRoute(int id, string[] route,int places,DateTime startTime,DateTime endTime)
     {
@@ -21,6 +23,10 @@ public class TicketOperator
     public void delRoute(int id)
     {
         _flyWays.RemoveAt(id);
+    }
+    public void clearWays()
+    {
+        flyWays.Clear();
     }
     public List<string[]> getSortetPrettyRoutes(string destination)
     {
@@ -83,6 +89,21 @@ public class TicketOperator
             _flyWays.Add(new Flyway(el));
         }
 
+    }
+    public void genRandData()
+    {
+
+        int lastId = flyWays.Count>0 ?flyWays.Last().id:14;
+        for(int i = 0; i < 50; i++)
+        {
+            DateTime startdt = DateTime.Now.AddHours(new Random().Next(72));
+            flyWays.Add(new Flyway(lastId + i, [randCityAr[i%randCityAr.Length], randCityAr[(i+1) % randCityAr.Length]],120- new Random().Next(110), startdt,startdt.AddHours(new Random().Next(12)+1)));
+        }
+        for (int i = 0; i < 50; i++)
+        {
+            DateTime startdt = DateTime.Now.AddHours(new Random().Next(72));
+            flyWays.Add(new Flyway(lastId + i, [randCityAr[i % randCityAr.Length], randCityAr[(i + 1) % randCityAr.Length], randCityAr[(i + 3) % randCityAr.Length]], 120 - new Random().Next(110), startdt, startdt.AddHours(new Random().Next(12)+1)));
+        }
     }
 
 }

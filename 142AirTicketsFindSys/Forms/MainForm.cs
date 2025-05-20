@@ -124,13 +124,13 @@ namespace _142AirTicketsFindSys.Forms
 
         private void MainForm_Resize(object sender, EventArgs e)
         {
-            tableLayoutPanel1.Size=new Size( (int)(996f *( (float)(this.Size.Width) / (float)(org_size.Width))),373);
+            tableLayoutPanel1.Size=new Size( (int)(996f *( (float)(this.Size.Width) / (float)(org_size.Width))), this.Size.Height - (org_size.Height - 373));
             tableLayoutPanel1.Location = new Point((int)(13f * ((float)(this.Size.Width) / (float)(org_size.Width))), 42);
             tableLayoutPanel2.Location = new Point((int)(13f * ((float)(this.Size.Width) / (float)(org_size.Width))), 8);
             tableLayoutPanel2.Size = new Size((int)(996f * ((float)(this.Size.Width) / (float)(org_size.Width))), 36);
             panel1.Size = new Size(183, this.Size.Height - (org_size.Height - 403));//Location = new Point((int)(1015f * ((float)(this.Size.Width) / (float)(org_size.Width))), 12); //new Size((int)(183f * ((float)(this.Size.Width) / (float)(org_size.Width))), 403);
             //panel1.Location = new Point(1015, (int)(12f * ((float)(this.Size.Height) / (float)(org_size.Height))));
-            button3.Location = new Point(34, this.Size.Height-(org_size.Height - 377));
+            button3.Location = new Point(25, this.Size.Height-(org_size.Height - 377));
         }
     }
 }

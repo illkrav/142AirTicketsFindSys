@@ -41,6 +41,8 @@
             dateTimePicker1 = new DateTimePicker();
             dateTimePicker2 = new DateTimePicker();
             button2 = new Button();
+            button3 = new Button();
+            button4 = new Button();
             SuspendLayout();
             // 
             // comboBox1
@@ -145,7 +147,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(652, 76);
+            button2.Location = new Point(652, 41);
             button2.Name = "button2";
             button2.Size = new Size(139, 30);
             button2.TabIndex = 14;
@@ -153,11 +155,33 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
+            // button3
+            // 
+            button3.Location = new Point(652, 77);
+            button3.Name = "button3";
+            button3.Size = new Size(139, 30);
+            button3.TabIndex = 15;
+            button3.Text = "addRandomData";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(652, 113);
+            button4.Name = "button4";
+            button4.Size = new Size(139, 30);
+            button4.TabIndex = 16;
+            button4.Text = "ClearRoutes";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
+            // 
             // DialogForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 170);
+            Controls.Add(button4);
+            Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(dateTimePicker2);
             Controls.Add(dateTimePicker1);
@@ -171,8 +195,11 @@
             Controls.Add(textBox1);
             Controls.Add(button1);
             Controls.Add(comboBox1);
+            MaximumSize = new Size(816, 209);
+            MinimumSize = new Size(816, 209);
             Name = "DialogForm";
             Text = "DialogForm";
+            Load += DialogForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -192,5 +219,7 @@
         private DateTimePicker dateTimePicker1;
         private DateTimePicker dateTimePicker2;
         private Button button2;
+        private Button button3;
+        private Button button4;
     }
 }
