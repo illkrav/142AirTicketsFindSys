@@ -15,12 +15,16 @@ namespace _142AirTicketsFindSys.Forms
     {
         public TicketOperator oprt = new("NNN");
         public int selectedWay = -1;
+        private Size org_size;
+        
         public MainForm()
         {
             oprt.load("db");
             //oprt.addRoute(99, ["Абу-Дабе", "ЛБС", "Анкара"], 999, DateTime.Now.AddDays(5), DateTime.Now.AddDays(8));
             //oprt.save("db");
+            
             InitializeComponent();
+            org_size = this.Size;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -111,11 +115,22 @@ namespace _142AirTicketsFindSys.Forms
         {
             //tableLayoutPanel1.RowStyles.//[BackColor] = Color.Aqua;//Add(BackColor Color.Aqua);
             selectedWay = id;
-            foreach(var el in tableLayoutPanel1.Controls.Cast<Control>())
+            foreach (var el in tableLayoutPanel1.Controls.Cast<Control>())
             {
-                el.BackColor = el.Name==id.ToString()? Color.Aqua:Color.Transparent;
-                
+                el.BackColor = el.Name == id.ToString() ? Color.Aqua : Color.Transparent;
+
             }
+        }
+
+        private void MainForm_Resize(object sender, EventArgs e)
+        {
+            tableLayoutPanel1.Size=new Size( (int)(996f *( (float)(this.Size.Width) / (float)(org_size.Width))),373);
+            tableLayoutPanel1.Location = new Point((int)(13f * ((float)(this.Size.Width) / (float)(org_size.Width))), 42);
+            tableLayoutPanel2.Location = new Point((int)(13f * ((float)(this.Size.Width) / (float)(org_size.Width))), 8);
+            tableLayoutPanel2.Size = new Size((int)(996f * ((float)(this.Size.Width) / (float)(org_size.Width))), 36);
+            panel1.Size = new Size(183, this.Size.Height - (org_size.Height - 403));//Location = new Point((int)(1015f * ((float)(this.Size.Width) / (float)(org_size.Width))), 12); //new Size((int)(183f * ((float)(this.Size.Width) / (float)(org_size.Width))), 403);
+            //panel1.Location = new Point(1015, (int)(12f * ((float)(this.Size.Height) / (float)(org_size.Height))));
+            button3.Location = new Point(34, this.Size.Height-(org_size.Height - 377));
         }
     }
 }

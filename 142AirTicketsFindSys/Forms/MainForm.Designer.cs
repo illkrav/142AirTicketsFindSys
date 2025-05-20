@@ -59,9 +59,10 @@
             // 
             // button3
             // 
-            button3.Location = new Point(12, 371);
+            button3.Anchor = AnchorStyles.Bottom;
+            button3.Location = new Point(25, 377);
             button3.Name = "button3";
-            button3.Size = new Size(164, 23);
+            button3.Size = new Size(149, 23);
             button3.TabIndex = 3;
             button3.Text = "Edit routes";
             button3.UseVisualStyleBackColor = true;
@@ -69,9 +70,9 @@
             // 
             // button2
             // 
-            button2.Location = new Point(9, 105);
+            button2.Location = new Point(27, 105);
             button2.Name = "button2";
-            button2.Size = new Size(165, 32);
+            button2.Size = new Size(147, 32);
             button2.TabIndex = 2;
             button2.Text = "Buy";
             button2.UseVisualStyleBackColor = true;
@@ -81,16 +82,16 @@
             // 
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(9, 9);
+            comboBox1.Location = new Point(27, 9);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(165, 23);
+            comboBox1.Size = new Size(147, 23);
             comboBox1.TabIndex = 1;
             // 
             // button1
             // 
-            button1.Location = new Point(8, 51);
+            button1.Location = new Point(27, 51);
             button1.Name = "button1";
-            button1.Size = new Size(167, 31);
+            button1.Size = new Size(148, 31);
             button1.TabIndex = 0;
             button1.Text = "Search";
             button1.UseVisualStyleBackColor = true;
@@ -197,9 +198,11 @@
             Controls.Add(tableLayoutPanel2);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(panel1);
+            MinimumSize = new Size(1020, 200);
             Name = "MainForm";
             Text = "MainForm";
             Load += MainForm_Load;
+            Resize += MainForm_Resize;
             panel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
