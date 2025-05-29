@@ -1,108 +1,115 @@
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Windows.Forms;
 
 public class TicketOperator
 {
-    private List<Flyway> _flyWays;
-    public List<Flyway> flyWays { get { return _flyWays; } }
-    public string startCity;
-    private string[] randCityAr;
+    //private List<Flyway> _flyWays;
+    public List<Flyway> FlyWays { get; private set; }
+    public string StartCity;
+    private string[] RandCityAr;
     public TicketOperator(string city)
     {
-        this._flyWays = new List<Flyway>();
-        startCity = city;
-        randCityAr = ["Анкара","Абу-Даби","Осака","Нью-Дели","Стамбул","Тель-Авів"];
+        this.FlyWays = new List<Flyway>();
+        this.StartCity = city;
+        this.RandCityAr = ["Анкара","Абу-Даби","Осака","Нью-Дели","Стамбул","Тель-Авів"];
     }
-    public void addRoute(int id, string[] route,int places,DateTime startTime,DateTime endTime)
+    public void AddRoute(int id, string[] route,int[] places,DateTime startTime,DateTime endTime)
     {
 
         
-        _flyWays.Add(new Flyway(id, route, places, startTime, endTime));
+        FlyWays.Add(new Flyway(id, route, places, startTime, endTime));
         //...
     }
-    public void delRoute(int id)
+    public void DelRoute(int id)
     {
-        _flyWays.RemoveAt(id);
+        FlyWays.RemoveAt(id);
     }
-    public void clearWays()
+    public void ClearWays()
     {
-        flyWays.Clear();
+        FlyWays.Clear();
     }
-    public List<string[]> getSortetPrettyRoutes(string destination)
+    public List<string[]> GetSortetPrettyRoutes(string destination)
     {
         List<string[]> ways = new List<string[]>();
-        for(int i = 0; i < _flyWays.Count; i++)
+        for(int i = 0; i < FlyWays.Count; i++)
         {
-            if(Array.IndexOf(_flyWays[i].route,destination) ==-1) continue;
-            ways.Add(_flyWays[i].getPrettyWay());
+            if(Array.IndexOf(FlyWays[i].Route,destination) ==-1) continue;
+            ways.Add(FlyWays[i].GetPrettyWay());
             
 
         }
 
         return ways;
     }
-    public List<Flyway> getSortetRoutes(string destination)
+    public List<Flyway> GetSortetRoutes(string destination)
     {
         List<Flyway> ways = new List<Flyway>();
-        for (int i = 0; i < _flyWays.Count; i++)
+        for (int i = 0; i < FlyWays.Count; i++)
         {
-            if (Array.IndexOf(_flyWays[i].route, destination) == -1) continue;
-            ways.Add(_flyWays[i]);
+            if (Array.IndexOf(FlyWays[i].Route, destination) == -1) continue;
+            ways.Add(FlyWays[i]);
 
 
         }
 
         return ways;
     }
-    public bool buyTicket(int id,int amount)
+    public bool BuyTicket(int id,int amount,int clas)
     {
-        if(flyWays[id].places>=amount && amount > 0)
+        if (FlyWays[id].Places[clas] >=amount && amount > 0)
         {
-            flyWays[id].buyTickets(amount);
+            FlyWays[id].BuyTickets(amount,clas);
             return true;
         }
         return false;
     }
     
-    public void save(string path)
+    public void Save(string path)
     {
-        string[][][] json = new string[_flyWays.Count][][];
-        int i = 0;
-        foreach (Flyway el in _flyWays)
-        {
-            json[i] = el.saveData();
-            i++;
+        //string[][][] json = new string[FlyWays.Count][][];
+        //int i = 0;
+        //var jsonEx2;
+        //foreach (Flyway el in FlyWays)
+        //{
+            //json[i] = el.saveData();
+             
+            //i++;
 
-        }
-        string jsonEx = JsonSerializer.Serialize(json);
-        File.WriteAllText(path + ".json", jsonEx);
+        //}
+        var jsonEx2 = JsonSerializer.Serialize(FlyWays,new JsonSerializerOptions { WriteIndented = true });
+        
+        //string jsonEx = JsonSerializer.Serialize(json);
+        File.WriteAllText(path + ".json", jsonEx2);
 
     }
-    public void load(string path)
+    public void Load(string path)
     {
         if(!File.Exists(path + ".json"))return;
         string text = File.ReadAllText(path + ".json");
-        var file = JsonSerializer.Deserialize<string[][][]>(text);
-        _flyWays.Clear();
-        foreach (var el in file)
-        {
-            _flyWays.Add(new Flyway(el));
-        }
+        
+        FlyWays = JsonSerializer.Deserialize<List<Flyway>>(text);
+        
+        //FlyWays.Clear();
+        //foreach (var el in file)
+        //{
+        //    FlyWays.Add(new Flyway(el));
+        //}
 
     }
-    public void genRandData()
+    public void GenRandData()
     {
 
-        int lastId = flyWays.Count>0 ?flyWays.Last().id:14;
-        for(int i = 0; i < 50; i++)
+        int lastId = FlyWays.Count>0 ?FlyWays.Last().Id:14;
+        for(int i = 0; i < 20; i++)
         {
             DateTime startdt = DateTime.Now.AddHours(new Random().Next(72));
-            flyWays.Add(new Flyway(lastId + i, [randCityAr[i%randCityAr.Length], randCityAr[(i+1) % randCityAr.Length]],120- new Random().Next(110), startdt,startdt.AddHours(new Random().Next(12)+1)));
+            FlyWays.Add(new Flyway(lastId + i, [RandCityAr[i%RandCityAr.Length], RandCityAr[(i+1) % RandCityAr.Length]],[120- new Random().Next(110),0], startdt,startdt.AddHours(new Random().Next(12)+1)));
         }
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < 20; i++)
         {
             DateTime startdt = DateTime.Now.AddHours(new Random().Next(72));
-            flyWays.Add(new Flyway(lastId + i, [randCityAr[i % randCityAr.Length], randCityAr[(i + 1) % randCityAr.Length], randCityAr[(i + 3) % randCityAr.Length]], 120 - new Random().Next(110), startdt, startdt.AddHours(new Random().Next(12)+1)));
+            FlyWays.Add(new Flyway(lastId + i, [RandCityAr[i % RandCityAr.Length], RandCityAr[(i + 1) % RandCityAr.Length], RandCityAr[(i + 3) % RandCityAr.Length]], [120 - new Random().Next(110),0], startdt, startdt.AddHours(new Random().Next(12)+1)));
         }
     }
 

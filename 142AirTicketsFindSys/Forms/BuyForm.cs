@@ -15,13 +15,13 @@ namespace _142AirTicketsFindSys.Forms
         public MainForm cll;
         public BuyForm()
         {
-            
+
             InitializeComponent();
         }
         public void initRoute()
         {
             string ret = "";
-            foreach (var st in cll.oprt.flyWays[cll.selectedWay].getPrettyWay())
+            foreach (var st in cll.oprt.FlyWays[cll.selectedWay].GetPrettyWay())
             {
                 ret += st + "|";
             }
@@ -29,7 +29,7 @@ namespace _142AirTicketsFindSys.Forms
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            cll.oprt.buyTicket(cll.selectedWay, int.Parse(textBox1.Text));
+            cll.oprt.BuyTicket(cll.selectedWay, int.Parse(textBox1.Text), 0);
             cll.updTable();
             this.Close();
         }
@@ -38,5 +38,7 @@ namespace _142AirTicketsFindSys.Forms
         {
             this.Close();
         }
+
+        
     }
 }

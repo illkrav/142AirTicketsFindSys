@@ -201,7 +201,7 @@
             Controls.Add(panel1);
             MinimumSize = new Size(1020, 200);
             Name = "MainForm";
-            Text = "MainForm";
+            Text = "TicketBuyApp";
             Load += MainForm_Load;
             Resize += MainForm_Resize;
             panel1.ResumeLayout(false);

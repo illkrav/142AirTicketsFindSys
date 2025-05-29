@@ -34,6 +34,8 @@
             label3 = new Label();
             button1 = new Button();
             button2 = new Button();
+            comboBox1 = new ComboBox();
+            label4 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -90,11 +92,32 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
+            // comboBox1
+            // 
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Перший класс", "Другий класс" });
+            comboBox1.Location = new Point(200, 124);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(153, 23);
+            comboBox1.TabIndex = 6;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(206, 88);
+            label4.Name = "label4";
+            label4.Size = new Size(105, 15);
+            label4.TabIndex = 7;
+            label4.Text = "Тип квитка(класс)";
+            // 
             // BuyForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(554, 276);
+            Controls.Add(label4);
+            Controls.Add(comboBox1);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(label3);
@@ -115,5 +138,7 @@
         private Label label3;
         private Button button1;
         private Button button2;
+        private ComboBox comboBox1;
+        private Label label4;
     }
 }

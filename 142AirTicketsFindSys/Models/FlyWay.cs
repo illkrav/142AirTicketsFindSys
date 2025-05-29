@@ -1,43 +1,37 @@
 public class Flyway
 {
-    public int id;
-    public string[] route;
-    public int places;
-    public DateTime startTime;
-    public DateTime endTime;
-    public Flyway(int id, string[] route, int places,DateTime startTime,DateTime endTime)
+    public int Id { get; set; }
+    public string[] Route { get; set; }
+    public int[] Places { get; set; }
+    public DateTime StartTime { get; set; }
+    public DateTime EndTime { get; set; }
+    public Flyway(int id, string[] route, int[] places,DateTime startTime,DateTime endTime)
     {
-        this.id = id;
-        this.route = route;
-        this.places = places;
-        this.startTime = startTime;
-        this.endTime = endTime;
+        this.Id = id;
+        this.Route = route;
+        this.Places = places;
+        this.StartTime = startTime;
+        this.EndTime = endTime;
     }
-    public Flyway(string[][] dt)
+    
+    public Flyway()
     {
-        this.id = int.Parse(dt[0][0]);
-        this.route = dt[1];
-        this.places = int.Parse(dt[0][1]);
-        this.startTime = DateTime.Parse(dt[0][2]);
-        this.endTime = DateTime.Parse(dt[0][3]);
+
     }
-    public string[] getPrettyWay()
+    public string[] GetPrettyWay()
     {
         string middle = "";
-        for(int i = 0; i < route.Length - 1; i++)
+        for(int i = 0; i < Route.Length - 1; i++)
         {
-            middle += route[i] + "---";
+            middle += Route[i] + "---";
         }
         middle = middle.Remove(middle.Length - 3,3);
-        return [id.ToString(), route.Last(),middle,places.ToString(),startTime.ToString(),((int)((endTime-startTime).TotalHours)).ToString()+"h"];
+        return [Id.ToString(), Route.Last(), middle, Places[0].ToString()+"|"+ Places[1].ToString(), StartTime.ToString(),((int)((EndTime-StartTime).TotalHours)).ToString()+"h"];
     }
-    public void buyTickets(int amount)
+    public void BuyTickets(int amount,int clas)
     {
-        places -= amount;
+        Places[clas] -= amount;
     }
-    public string[][] saveData()
-    {
-        return [[id.ToString(),places.ToString(),startTime.ToString(),endTime.ToString()],route];
-    }
+    
 
 }

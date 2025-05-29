@@ -31,10 +31,10 @@ namespace _142AirTicketsFindSys.Forms
         private void recomplList()
         {
             comboBox1.Items.Clear();
-            foreach (var el in _cll.oprt.flyWays)
+            foreach (var el in _cll.oprt.FlyWays)
             {
                 var ret = "";
-                foreach (var st in el.getPrettyWay())
+                foreach (var st in el.GetPrettyWay())
                 {
                     ret += st + "|";
                 }
@@ -46,7 +46,7 @@ namespace _142AirTicketsFindSys.Forms
         {
             //var ow = (MainForm)cll;
             if (textBox2.Text.Length == 0 || textBox1.Text.Length == 0 || textBox3.Text.Length == 0) return;
-            cll.oprt.addRoute(int.Parse(textBox1.Text), textBox2.Text.Split(','), int.Parse(textBox3.Text), dateTimePicker1.Value, dateTimePicker2.Value);
+            cll.oprt.AddRoute(int.Parse(textBox1.Text), textBox2.Text.Split(','), [int.Parse(textBox3.Text),0], dateTimePicker1.Value, dateTimePicker2.Value);
             recomplList();
             //textBox1
         }
@@ -55,7 +55,7 @@ namespace _142AirTicketsFindSys.Forms
         {
             var dl = new onetimeDialog();
             var res = dl.ShowDialog();
-            if (res == DialogResult.OK) cll.oprt.delRoute(comboBox1.SelectedIndex);
+            if (res == DialogResult.OK) cll.oprt.DelRoute(comboBox1.SelectedIndex);
 
             recomplList();
         }
@@ -74,7 +74,7 @@ namespace _142AirTicketsFindSys.Forms
         {
             var dl = new onetimeDialog();
             var res = dl.ShowDialog();
-            if (res == DialogResult.OK) cll.oprt.genRandData();
+            if (res == DialogResult.OK) cll.oprt.GenRandData();
 
             recomplList();
         }
@@ -83,7 +83,7 @@ namespace _142AirTicketsFindSys.Forms
         {
             var dl = new onetimeDialog();
             var res = dl.ShowDialog();
-            if (res == DialogResult.OK) cll.oprt.clearWays();
+            if (res == DialogResult.OK) cll.oprt.ClearWays();
             recomplList();
 
         }

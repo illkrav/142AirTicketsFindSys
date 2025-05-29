@@ -19,7 +19,7 @@ namespace _142AirTicketsFindSys.Forms
         
         public MainForm()
         {
-            oprt.load("db");
+            oprt.Load("db");
             //oprt.addRoute(99, ["Абу-Дабе", "ЛБС", "Анкара"], 999, DateTime.Now.AddDays(5), DateTime.Now.AddDays(8));
             //oprt.save("db");
             
@@ -34,9 +34,9 @@ namespace _142AirTicketsFindSys.Forms
         public void cityUpd()
         {
             var lst = new List<string>();
-            foreach (var el in oprt.flyWays)
+            foreach (var el in oprt.FlyWays)
             {
-                foreach (var name in el.route)
+                foreach (var name in el.Route)
                 {
                     if (lst.IndexOf(name) == -1) lst.Add(name);
 
@@ -56,20 +56,20 @@ namespace _142AirTicketsFindSys.Forms
         {
             if (comboBox1.SelectedItem == null) return;
             //var rts = oprt.getSortetPrettyRoutes(comboBox1.SelectedItem.ToString());
-            var rts = oprt.getSortetRoutes(comboBox1.SelectedItem.ToString());
+            var rts = oprt.GetSortetRoutes(comboBox1.SelectedItem.ToString());
             tableLayoutPanel1.Controls.Clear();
-            rts = rts.OrderBy(x => x.getPrettyWay()[4]).ToList();
+            rts = rts.OrderBy(x => x.GetPrettyWay()[4]).ToList();
 
             foreach (var el in rts)
             {
-                for (int i = 0; i < el.getPrettyWay().Length; i++)
+                for (int i = 0; i < el.GetPrettyWay().Length; i++)
                 {
 
                     var lbl = new Label();
                     //lbl.Width = 230;
                     lbl.AutoSize = true;
-                    lbl.Name = oprt.flyWays.IndexOf(el).ToString();
-                    lbl.Text = el.getPrettyWay()[i];
+                    lbl.Name = oprt.FlyWays.IndexOf(el).ToString();
+                    lbl.Text = el.GetPrettyWay()[i];
 
                     lbl.Click += slc_clc;
                     tableLayoutPanel1.Controls.Add(lbl);
@@ -92,7 +92,7 @@ namespace _142AirTicketsFindSys.Forms
         }
         protected override void OnFormClosed(FormClosedEventArgs e)
         {
-            oprt.save("db");
+            oprt.Save("db");
             base.OnFormClosed(e);
         }
 
