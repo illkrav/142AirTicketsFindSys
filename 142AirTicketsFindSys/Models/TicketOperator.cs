@@ -12,7 +12,7 @@ public class TicketOperator
     {
         this.FlyWays = new List<Flyway>();
         
-        this.RandCityAr = ["Анкара","Абу-Даби","Осака","Нью-Дели","Стамбул","Тель-Авів"];
+        this.RandCityAr = ["Ankara","Abu-Dabi","Osaka","New-Deli","Tel-Aviv"];
     }
     public void AddRoute(int id, string[] route,int[] places,DateTime startTime,DateTime endTime)
     {
