@@ -21,6 +21,7 @@ namespace _142AirTicketsFindSys.Forms
         public void initRoute()
         {
 
+            
             var el = cll.oprt.FlyWays[cll.selectedWay];
             var ret = el.Id.ToString() + "|" + el.Route.Last() + "|";
 

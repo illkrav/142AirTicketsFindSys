@@ -22,10 +22,11 @@ namespace _142AirTicketsFindSys.Forms
         private string[] FormPreview()
         {
             string[] text = new string[10];
+            
             Flyway selectedWay = cll.oprt.FlyWays[cll.selectedWay];
             text[0] = "ПОСАДКОВА ВІДОМІСТЬ";
             text[1] = "-------------------";
-            text[2] = "Рейс: "+selectedWay.Id.ToString();
+            text[2] = "Рейс номер: "+selectedWay.Id.ToString();
             text[3] = "Дата відльоту: " + selectedWay.StartTime.ToString();
             text[4] = "Дата прильоту: " + selectedWay.EndTime.ToString();
             string middle = "";
@@ -34,7 +35,7 @@ namespace _142AirTicketsFindSys.Forms
                 middle += selectedWay.Route[i] + "---";
             }
             middle = middle.Remove(middle.Length - 3, 3);
-            text[5] = "Маршрут: " + middle;
+            text[5] = "Маршрут: Стамбул---" + middle;
             text[6] = "-------------------";
             text[7] = "Загальна кількість пасажирів: " + (120-selectedWay.Places[0] - selectedWay.Places[1]).ToString();
             text[8] = "Першого класу: " + (30-selectedWay.Places[0]).ToString();
@@ -47,7 +48,9 @@ namespace _142AirTicketsFindSys.Forms
         }
         private void button1_Click(object sender, EventArgs e)
         {
-
+            string[] txtdt = FormPreview();
+            File.WriteAllLines("Fly"+ cll.oprt.FlyWays[cll.selectedWay].Id.ToString()+".txt", txtdt);
+            this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)

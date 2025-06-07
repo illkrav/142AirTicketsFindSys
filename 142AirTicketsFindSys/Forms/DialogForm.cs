@@ -87,11 +87,19 @@ namespace _142AirTicketsFindSys.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var dl = new onetimeDialog();
-            var res = dl.ShowDialog();
-            if (res == DialogResult.OK) cll.oprt.DelRoute(comboBox1.SelectedIndex-1);
+            if (comboBox1.SelectedIndex > 0) {
+                var dl = new onetimeDialog();
+                var res = dl.ShowDialog();
+                if (res == DialogResult.OK) cll.oprt.DelRoute(comboBox1.SelectedIndex - 1);
 
-            recomplList();
+                recomplList();
+            }
+            else
+            {
+                var er = new Error();
+                er.ShowDialog(this);
+            }
+            
         }
         protected override void OnFormClosed(FormClosedEventArgs e)
         {

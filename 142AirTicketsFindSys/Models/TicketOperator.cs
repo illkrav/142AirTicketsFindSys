@@ -92,12 +92,12 @@ public class TicketOperator
         for(int i = 0; i < 20; i++)
         {
             DateTime startdt = DateTime.Now.AddHours(new Random().Next(72));
-            FlyWays.Add(new Flyway(100+lastId + i, [RandCityAr[i%RandCityAr.Length], RandCityAr[(i+1) % RandCityAr.Length]],[40- new Random().Next(40), 120 - new Random().Next(90)], startdt,startdt.AddHours(new Random().Next(12)+1)));
+            FlyWays.Add(new Flyway(100+lastId + i, [RandCityAr[i%RandCityAr.Length], RandCityAr[(i+1) % RandCityAr.Length]],[30- new Random().Next(30), 90 - new Random().Next(90)], startdt,startdt.AddHours(new Random().Next(12)+1)));
         }
         for (int i = 0; i < 20; i++)
         {
             DateTime startdt = DateTime.Now.AddHours(new Random().Next(72));
-            FlyWays.Add(new Flyway(200+lastId + i, [RandCityAr[i % RandCityAr.Length], RandCityAr[(i + 1) % RandCityAr.Length], RandCityAr[(i + 3) % RandCityAr.Length]], [40 - new Random().Next(40), 120 - new Random().Next(90)], startdt, startdt.AddHours(new Random().Next(12)+1)));
+            FlyWays.Add(new Flyway(200+lastId + i, [RandCityAr[i % RandCityAr.Length], RandCityAr[(i + 1) % RandCityAr.Length], RandCityAr[(i + 3) % RandCityAr.Length]], [30 - new Random().Next(30), 90 - new Random().Next(90)], startdt, startdt.AddHours(new Random().Next(12)+1)));
         }
     }
 

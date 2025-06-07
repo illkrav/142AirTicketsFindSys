@@ -115,10 +115,18 @@ namespace _142AirTicketsFindSys.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var dl = new BuyForm();
-            dl.cll = this;
-            dl.initRoute();
-            dl.ShowDialog(this);
+            if (selectedWay == -1)
+            {
+                var er = new Error();
+                er.ShowDialog(this);
+            }
+            else
+            {
+                var dl = new BuyForm();
+                dl.cll = this;
+                dl.initRoute();
+                dl.ShowDialog(this); 
+            }
         }
         private void slc_clc(object sender, EventArgs e)
         {
@@ -144,7 +152,7 @@ namespace _142AirTicketsFindSys.Forms
             tableLayoutPanel1.Size = new Size((int)(996f * ((float)(this.Size.Width) / (float)(org_size.Width))), this.Size.Height - (org_size.Height - 373));
             tableLayoutPanel1.Location = new Point((int)(13f * ((float)(this.Size.Width) / (float)(org_size.Width))), 42);
             tableLayoutPanel2.Location = new Point((int)(12f * ((float)(this.Size.Width) / (float)(org_size.Width))), 21);
-            tableLayoutPanel2.Size = new Size((int)(996f * ((float)(this.Size.Width) / (float)(org_size.Width))), 36);
+            tableLayoutPanel2.Size = new Size((int)(997f * ((float)(this.Size.Width) / (float)(org_size.Width))), 23);
             panel1.Size = new Size(183, this.Size.Height - (org_size.Height - 403));//Location = new Point((int)(1015f * ((float)(this.Size.Width) / (float)(org_size.Width))), 12); //new Size((int)(183f * ((float)(this.Size.Width) / (float)(org_size.Width))), 403);
             //panel1.Location = new Point(1015, (int)(12f * ((float)(this.Size.Height) / (float)(org_size.Height))));
             //button3.Location = new Point(25, this.Size.Height - (org_size.Height - 377));
@@ -152,10 +160,18 @@ namespace _142AirTicketsFindSys.Forms
 
         private void label8_Click(object sender, EventArgs e)
         {
-            var dl = new FlyManifest();
-            dl.cll = this;
-            dl.SetTextPreview();
-            dl.ShowDialog(this);
+            if (selectedWay == -1)
+            {
+                var er = new Error();
+                er.ShowDialog(this);
+            }
+            else 
+            { 
+                var dl = new FlyManifest();
+                dl.cll = this;
+                dl.SetTextPreview();
+                dl.ShowDialog(this);
+            }
         }
     }
 }
