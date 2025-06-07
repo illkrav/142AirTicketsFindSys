@@ -12,7 +12,7 @@ namespace _142AirTicketsFindSys.Forms
 {
     public partial class onetimeDialog : Form
     {
-        //public MainForm cll;
+        
         public onetimeDialog()
         {
             InitializeComponent();

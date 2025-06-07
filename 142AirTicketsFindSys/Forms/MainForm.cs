@@ -22,8 +22,7 @@ namespace _142AirTicketsFindSys.Forms
         public MainForm()
         {
             oprt.Load("db");
-            //oprt.addRoute(99, ["Абу-Дабе", "ЛБС", "Анкара"], 999, DateTime.Now.AddDays(5), DateTime.Now.AddDays(8));
-            //oprt.save("db");
+            
 
             InitializeComponent();
             org_size = this.Size;
@@ -57,7 +56,7 @@ namespace _142AirTicketsFindSys.Forms
         public void updTable()
         {
             if (comboBox1.SelectedItem == null) return;
-            //var rts = oprt.getSortetPrettyRoutes(comboBox1.SelectedItem.ToString());
+            
             var rts = oprt.GetSortetRoutes(comboBox1.SelectedItem.ToString());
             tableLayoutPanel1.Controls.Clear();
             
@@ -69,11 +68,11 @@ namespace _142AirTicketsFindSys.Forms
                 {
 
                     var lbl = new Label();
-                    //lbl.Width = 230;
+                    
                     lbl.AutoSize = true;
                     lbl.Name = oprt.FlyWays.IndexOf(el).ToString();
 
-                    //lbl.Text = el.GetPrettyWay()[i];
+                    
 
                     lbl.Click += slc_clc;
                     lbss[i] = lbl;
@@ -102,7 +101,7 @@ namespace _142AirTicketsFindSys.Forms
 
         private void button3_Click(object sender, EventArgs e)
         {
-            //var frm2 = new Form(DialogForm);
+            
             var dl = new DialogForm();
             dl.cll = this;
             dl.ShowDialog(this);
@@ -132,13 +131,13 @@ namespace _142AirTicketsFindSys.Forms
         {
 
             Label lb = (Label)sender;
-            //lb.Text = lb.Name;
+            
             select_row(int.Parse(lb.Name));
 
         }
         private void select_row(int id)
         {
-            //tableLayoutPanel1.RowStyles.//[BackColor] = Color.Aqua;//Add(BackColor Color.Aqua);
+            
             selectedWay = id;
             foreach (var el in tableLayoutPanel1.Controls.Cast<Control>())
             {
@@ -153,9 +152,8 @@ namespace _142AirTicketsFindSys.Forms
             tableLayoutPanel1.Location = new Point((int)(13f * ((float)(this.Size.Width) / (float)(org_size.Width))), 42);
             tableLayoutPanel2.Location = new Point((int)(12f * ((float)(this.Size.Width) / (float)(org_size.Width))), 21);
             tableLayoutPanel2.Size = new Size((int)(997f * ((float)(this.Size.Width) / (float)(org_size.Width))), 23);
-            panel1.Size = new Size(183, this.Size.Height - (org_size.Height - 403));//Location = new Point((int)(1015f * ((float)(this.Size.Width) / (float)(org_size.Width))), 12); //new Size((int)(183f * ((float)(this.Size.Width) / (float)(org_size.Width))), 403);
-            //panel1.Location = new Point(1015, (int)(12f * ((float)(this.Size.Height) / (float)(org_size.Height))));
-            //button3.Location = new Point(25, this.Size.Height - (org_size.Height - 377));
+            panel1.Size = new Size(183, this.Size.Height - (org_size.Height - 403));
+            
         }
 
         private void label8_Click(object sender, EventArgs e)

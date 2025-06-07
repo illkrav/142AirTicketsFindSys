@@ -4,14 +4,14 @@ using System.Windows.Forms;
 
 public class TicketOperator
 {
-    //private List<Flyway> _flyWays;
+    
     public List<Flyway> FlyWays { get; private set; }
-    //public string StartCity;
+    
     private string[] RandCityAr;
     public TicketOperator()
     {
         this.FlyWays = new List<Flyway>();
-        //this.StartCity = city;
+        
         this.RandCityAr = ["Анкара","Абу-Даби","Осака","Нью-Дели","Стамбул","Тель-Авів"];
     }
     public void AddRoute(int id, string[] route,int[] places,DateTime startTime,DateTime endTime)
@@ -55,19 +55,10 @@ public class TicketOperator
     
     public void Save(string path)
     {
-        //string[][][] json = new string[FlyWays.Count][][];
-        //int i = 0;
-        //var jsonEx2;
-        //foreach (Flyway el in FlyWays)
-        //{
-            //json[i] = el.saveData();
-             
-            //i++;
-
-        //}
+        
         var jsonEx2 = JsonSerializer.Serialize(FlyWays,new JsonSerializerOptions { WriteIndented = true });
         
-        //string jsonEx = JsonSerializer.Serialize(json);
+        
         File.WriteAllText(path + ".json", jsonEx2);
 
     }
@@ -78,11 +69,7 @@ public class TicketOperator
         
         FlyWays = JsonSerializer.Deserialize<List<Flyway>>(text);
         
-        //FlyWays.Clear();
-        //foreach (var el in file)
-        //{
-        //    FlyWays.Add(new Flyway(el));
-        //}
+        
 
     }
     public void GenRandData()

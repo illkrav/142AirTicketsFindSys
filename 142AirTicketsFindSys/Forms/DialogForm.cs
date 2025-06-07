@@ -25,7 +25,7 @@ namespace _142AirTicketsFindSys.Forms
         }
         public DialogForm()
         {
-            //cll = (MainForm)Parent;
+            
 
             InitializeComponent();
         }
@@ -59,7 +59,7 @@ namespace _142AirTicketsFindSys.Forms
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            //var ow = (MainForm)cll;
+            
             if (comboBox1.SelectedItem == "New")
             {
                 if (textBox2.Text.Length == 0 || textBox1.Text.Length == 0 || textBox3.Text.Split(',').Length != 2)
@@ -82,7 +82,7 @@ namespace _142AirTicketsFindSys.Forms
                 selectedItm.EndTime = dateTimePicker2.Value;
             }
                 recomplList();
-            //textBox1
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
