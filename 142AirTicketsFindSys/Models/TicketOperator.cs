@@ -6,12 +6,12 @@ public class TicketOperator
 {
     //private List<Flyway> _flyWays;
     public List<Flyway> FlyWays { get; private set; }
-    public string StartCity;
+    //public string StartCity;
     private string[] RandCityAr;
-    public TicketOperator(string city)
+    public TicketOperator()
     {
         this.FlyWays = new List<Flyway>();
-        this.StartCity = city;
+        //this.StartCity = city;
         this.RandCityAr = ["Анкара","Абу-Даби","Осака","Нью-Дели","Стамбул","Тель-Авів"];
     }
     public void AddRoute(int id, string[] route,int[] places,DateTime startTime,DateTime endTime)
@@ -29,19 +29,6 @@ public class TicketOperator
     {
         FlyWays.Clear();
     }
-    public List<string[]> GetSortetPrettyRoutes(string destination)
-    {
-        List<string[]> ways = new List<string[]>();
-        for(int i = 0; i < FlyWays.Count; i++)
-        {
-            if(Array.IndexOf(FlyWays[i].Route,destination) ==-1) continue;
-            ways.Add(FlyWays[i].GetPrettyWay());
-            
-
-        }
-
-        return ways;
-    }
     public List<Flyway> GetSortetRoutes(string destination)
     {
         List<Flyway> ways = new List<Flyway>();
@@ -52,14 +39,14 @@ public class TicketOperator
 
 
         }
-
+        ways = ways.OrderBy(x => x.StartTime).ToList();
         return ways;
     }
     public bool BuyTicket(int id,int amount,int clas)
     {
         if (FlyWays[id].Places[clas] >=amount && amount > 0)
         {
-            FlyWays[id].BuyTickets(amount,clas);
+            FlyWays[id].Places[clas]-=amount;
             return true;
         }
         return false;

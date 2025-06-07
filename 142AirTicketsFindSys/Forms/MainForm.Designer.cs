@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            button3 = new Button();
             button2 = new Button();
             comboBox1 = new ComboBox();
             button1 = new Button();
@@ -41,6 +40,8 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
+            label7 = new Label();
+            label8 = new Label();
             panel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
@@ -48,7 +49,6 @@
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            panel1.Controls.Add(button3);
             panel1.Controls.Add(button2);
             panel1.Controls.Add(comboBox1);
             panel1.Controls.Add(button1);
@@ -56,17 +56,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(183, 403);
             panel1.TabIndex = 0;
-            // 
-            // button3
-            // 
-            button3.Anchor = AnchorStyles.Bottom;
-            button3.Location = new Point(25, 377);
-            button3.Name = "button3";
-            button3.Size = new Size(149, 23);
-            button3.TabIndex = 3;
-            button3.Text = "Edit routes";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
             // 
             // button2
             // 
@@ -130,11 +119,11 @@
             tableLayoutPanel2.Controls.Add(label4, 3, 0);
             tableLayoutPanel2.Controls.Add(label5, 4, 0);
             tableLayoutPanel2.Controls.Add(label6, 5, 0);
-            tableLayoutPanel2.Location = new Point(12, 8);
+            tableLayoutPanel2.Location = new Point(12, 21);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(997, 36);
+            tableLayoutPanel2.Size = new Size(997, 23);
             tableLayoutPanel2.TabIndex = 2;
             // 
             // label1
@@ -191,11 +180,33 @@
             label6.TabIndex = 5;
             label6.Text = "Час перельоту";
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(14, 5);
+            label7.Name = "label7";
+            label7.Size = new Size(66, 15);
+            label7.TabIndex = 3;
+            label7.Text = "Edit Routes";
+            label7.Click += button3_Click;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(88, 4);
+            label8.Name = "label8";
+            label8.Size = new Size(71, 15);
+            label8.TabIndex = 4;
+            label8.Text = "Fly Manifest";
+            label8.Click += label8_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1201, 424);
+            Controls.Add(label8);
+            Controls.Add(label7);
             Controls.Add(tableLayoutPanel2);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(panel1);
@@ -208,6 +219,7 @@
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -224,6 +236,7 @@
         private Label label4;
         private Label label5;
         private Label label6;
-        private Button button3;
+        private Label label7;
+        private Label label8;
     }
 }

@@ -20,11 +20,19 @@ namespace _142AirTicketsFindSys.Forms
         }
         public void initRoute()
         {
-            string ret = "";
-            foreach (var st in cll.oprt.FlyWays[cll.selectedWay].GetPrettyWay())
+
+            var el = cll.oprt.FlyWays[cll.selectedWay];
+            var ret = el.Id.ToString() + "|" + el.Route.Last() + "|";
+
+            string middle = "";
+            for (int i = 0; i < el.Route.Length - 1; i++)
             {
-                ret += st + "|";
+                middle += el.Route[i] + "---";
             }
+            middle = middle.Remove(middle.Length - 3, 3);
+            ret += middle + "|";
+            ret += el.Places[0].ToString() + "/" + el.Places[1].ToString() + "|" + el.StartTime.ToString() + "|" + ((int)((el.EndTime - el.StartTime).TotalHours)).ToString() + "h";
+
             label2.Text = ret;
         }
         private void button1_Click(object sender, EventArgs e)

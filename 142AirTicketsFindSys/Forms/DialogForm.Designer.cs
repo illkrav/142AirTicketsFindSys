@@ -61,7 +61,7 @@
             button1.Name = "button1";
             button1.Size = new Size(139, 26);
             button1.TabIndex = 1;
-            button1.Text = "DelSelected";
+            button1.Text = "Delete";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
@@ -133,6 +133,8 @@
             // 
             // dateTimePicker1
             // 
+            dateTimePicker1.CustomFormat = "hh:mm dd/MM/yyyy";
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.Location = new Point(162, 58);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(87, 23);
@@ -140,6 +142,8 @@
             // 
             // dateTimePicker2
             // 
+            dateTimePicker2.CustomFormat = "hh:mm dd/MM/yyyy";
+            dateTimePicker2.Format = DateTimePickerFormat.Custom;
             dateTimePicker2.Location = new Point(255, 58);
             dateTimePicker2.Name = "dateTimePicker2";
             dateTimePicker2.Size = new Size(82, 23);
@@ -151,7 +155,7 @@
             button2.Name = "button2";
             button2.Size = new Size(139, 30);
             button2.TabIndex = 14;
-            button2.Text = "Add";
+            button2.Text = "Save";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
@@ -198,7 +202,7 @@
             MaximumSize = new Size(816, 209);
             MinimumSize = new Size(816, 209);
             Name = "DialogForm";
-            Text = "DialogForm";
+            Text = "Edit Routes";
             Load += DialogForm_Load;
             ResumeLayout(false);
             PerformLayout();

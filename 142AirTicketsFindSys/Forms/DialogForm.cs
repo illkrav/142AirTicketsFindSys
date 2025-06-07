@@ -31,13 +31,21 @@ namespace _142AirTicketsFindSys.Forms
         private void recomplList()
         {
             comboBox1.Items.Clear();
+            comboBox1.Items.Add("New");
+            comboBox1.SelectedIndex = 0;
             foreach (var el in _cll.oprt.FlyWays)
             {
-                var ret = "";
-                foreach (var st in el.GetPrettyWay())
+                var ret = el.Id.ToString() + "|" + el.Route.Last() + "|";
+
+                string middle = "";
+                for (int i = 0; i < el.Route.Length - 1; i++)
                 {
-                    ret += st + "|";
+                    middle += el.Route[i] + "---";
                 }
+                middle = middle.Remove(middle.Length - 3, 3);
+                ret+=middle + "|";
+                ret += el.Places[0].ToString() + "/" + el.Places[1].ToString() + "|" + el.StartTime.ToString() + "|" + ((int)((el.EndTime - el.StartTime).TotalHours)).ToString() + "h";
+
 
                 comboBox1.Items.Add(ret);
             }
@@ -45,6 +53,7 @@ namespace _142AirTicketsFindSys.Forms
         private void button2_Click(object sender, EventArgs e)
         {
             //var ow = (MainForm)cll;
+            if (comboBox1.SelectedItem != "New") return;
             if (textBox2.Text.Length == 0 || textBox1.Text.Length == 0 || textBox3.Text.Length == 0) return;
             cll.oprt.AddRoute(int.Parse(textBox1.Text), textBox2.Text.Split(','), [int.Parse(textBox3.Text),0], dateTimePicker1.Value, dateTimePicker2.Value);
             recomplList();

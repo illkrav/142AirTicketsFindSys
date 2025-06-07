@@ -1,10 +1,12 @@
 ﻿using Microsoft.VisualBasic;
+using Microsoft.VisualBasic.Devices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,16 +15,16 @@ namespace _142AirTicketsFindSys.Forms
 {
     public partial class MainForm : Form
     {
-        public TicketOperator oprt = new("NNN");
+        public TicketOperator oprt = new();
         public int selectedWay = -1;
         private Size org_size;
-        
+
         public MainForm()
         {
             oprt.Load("db");
             //oprt.addRoute(99, ["Абу-Дабе", "ЛБС", "Анкара"], 999, DateTime.Now.AddDays(5), DateTime.Now.AddDays(8));
             //oprt.save("db");
-            
+
             InitializeComponent();
             org_size = this.Size;
         }
@@ -58,22 +60,37 @@ namespace _142AirTicketsFindSys.Forms
             //var rts = oprt.getSortetPrettyRoutes(comboBox1.SelectedItem.ToString());
             var rts = oprt.GetSortetRoutes(comboBox1.SelectedItem.ToString());
             tableLayoutPanel1.Controls.Clear();
-            rts = rts.OrderBy(x => x.GetPrettyWay()[4]).ToList();
+            
 
             foreach (var el in rts)
             {
-                for (int i = 0; i < el.GetPrettyWay().Length; i++)
+                Label[] lbss = new Label[6];
+                for (int i = 0; i < 6; i++)
                 {
 
                     var lbl = new Label();
                     //lbl.Width = 230;
                     lbl.AutoSize = true;
                     lbl.Name = oprt.FlyWays.IndexOf(el).ToString();
-                    lbl.Text = el.GetPrettyWay()[i];
+
+                    //lbl.Text = el.GetPrettyWay()[i];
 
                     lbl.Click += slc_clc;
+                    lbss[i] = lbl;
                     tableLayoutPanel1.Controls.Add(lbl);
                 }
+                lbss[0].Text = el.Id.ToString();
+                lbss[1].Text = el.Route.Last();
+                string middle = "";
+                for (int i = 0; i < el.Route.Length - 1; i++)
+                {
+                    middle += el.Route[i] + "---";
+                }
+                middle = middle.Remove(middle.Length - 3, 3);
+                lbss[2].Text = middle;
+                lbss[3].Text = el.Places[0].ToString() + "|" + el.Places[1].ToString();
+                lbss[4].Text = el.StartTime.ToString();
+                lbss[5].Text = ((int)((el.EndTime - el.StartTime).TotalHours)).ToString() + "h";
                 tableLayoutPanel1.RowCount += 1;
             }
         }
@@ -124,13 +141,18 @@ namespace _142AirTicketsFindSys.Forms
 
         private void MainForm_Resize(object sender, EventArgs e)
         {
-            tableLayoutPanel1.Size=new Size( (int)(996f *( (float)(this.Size.Width) / (float)(org_size.Width))), this.Size.Height - (org_size.Height - 373));
+            tableLayoutPanel1.Size = new Size((int)(996f * ((float)(this.Size.Width) / (float)(org_size.Width))), this.Size.Height - (org_size.Height - 373));
             tableLayoutPanel1.Location = new Point((int)(13f * ((float)(this.Size.Width) / (float)(org_size.Width))), 42);
-            tableLayoutPanel2.Location = new Point((int)(13f * ((float)(this.Size.Width) / (float)(org_size.Width))), 8);
+            tableLayoutPanel2.Location = new Point((int)(12f * ((float)(this.Size.Width) / (float)(org_size.Width))), 21);
             tableLayoutPanel2.Size = new Size((int)(996f * ((float)(this.Size.Width) / (float)(org_size.Width))), 36);
             panel1.Size = new Size(183, this.Size.Height - (org_size.Height - 403));//Location = new Point((int)(1015f * ((float)(this.Size.Width) / (float)(org_size.Width))), 12); //new Size((int)(183f * ((float)(this.Size.Width) / (float)(org_size.Width))), 403);
             //panel1.Location = new Point(1015, (int)(12f * ((float)(this.Size.Height) / (float)(org_size.Height))));
-            button3.Location = new Point(25, this.Size.Height-(org_size.Height - 377));
+            //button3.Location = new Point(25, this.Size.Height - (org_size.Height - 377));
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
