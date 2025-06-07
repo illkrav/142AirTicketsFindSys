@@ -35,7 +35,7 @@ namespace _142AirTicketsFindSys.Forms
                 middle += selectedWay.Route[i] + "---";
             }
             middle = middle.Remove(middle.Length - 3, 3);
-            text[5] = "Маршрут: Стамбул---" + middle;
+            text[5] = "Маршрут: Stambul---" + middle;
             text[6] = "-------------------";
             text[7] = "Загальна кількість пасажирів: " + (120-selectedWay.Places[0] - selectedWay.Places[1]).ToString();
             text[8] = "Першого класу: " + (30-selectedWay.Places[0]).ToString();
