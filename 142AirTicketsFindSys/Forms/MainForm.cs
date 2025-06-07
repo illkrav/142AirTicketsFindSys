@@ -86,7 +86,7 @@ namespace _142AirTicketsFindSys.Forms
                 {
                     middle += el.Route[i] + "---";
                 }
-                middle = middle.Remove(middle.Length - 3, 3);
+                if (middle.Length > 0) middle = middle.Remove(middle.Length - 3, 3);
                 lbss[2].Text = middle;
                 lbss[3].Text = el.Places[0].ToString() + "|" + el.Places[1].ToString();
                 lbss[4].Text = el.StartTime.ToString();
@@ -152,7 +152,10 @@ namespace _142AirTicketsFindSys.Forms
 
         private void label8_Click(object sender, EventArgs e)
         {
-
+            var dl = new FlyManifest();
+            dl.cll = this;
+            dl.SetTextPreview();
+            dl.ShowDialog(this);
         }
     }
 }

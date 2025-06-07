@@ -1,6 +1,6 @@
 ﻿namespace _142AirTicketsFindSys.Forms
 {
-    partial class onetimeDialog
+    partial class FlyManifest
     {
         /// <summary>
         /// Required designer variable.
@@ -28,57 +28,57 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            richTextBox1 = new RichTextBox();
             button1 = new Button();
             button2 = new Button();
             SuspendLayout();
             // 
-            // label1
+            // richTextBox1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(168, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(79, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Підтвердити?";
+            richTextBox1.BorderStyle = BorderStyle.FixedSingle;
+            richTextBox1.Location = new Point(42, 32);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.ReadOnly = true;
+            richTextBox1.Size = new Size(710, 318);
+            richTextBox1.TabIndex = 0;
+            richTextBox1.Text = "";
             // 
             // button1
             // 
-            button1.Location = new Point(15, 100);
+            button1.Location = new Point(89, 370);
             button1.Name = "button1";
-            button1.Size = new Size(123, 41);
+            button1.Size = new Size(133, 45);
             button1.TabIndex = 1;
-            button1.Text = "Yes";
+            button1.Text = "Print";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
             // button2
             // 
-            button2.Location = new Point(282, 100);
+            button2.Location = new Point(578, 370);
             button2.Name = "button2";
-            button2.Size = new Size(123, 41);
+            button2.Size = new Size(149, 45);
             button2.TabIndex = 2;
-            button2.Text = "No";
+            button2.Text = "Close";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
-            // onetimeDialog
+            // FlyManifest
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(417, 158);
+            ClientSize = new Size(800, 450);
             Controls.Add(button2);
             Controls.Add(button1);
-            Controls.Add(label1);
-            Name = "onetimeDialog";
-            Text = "onetimeDialog";
+            Controls.Add(richTextBox1);
+            Name = "FlyManifest";
+            Text = "FlyManifest";
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private Label label1;
+        private RichTextBox richTextBox1;
         private Button button1;
         private Button button2;
     }

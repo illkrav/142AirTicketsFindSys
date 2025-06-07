@@ -29,15 +29,26 @@ namespace _142AirTicketsFindSys.Forms
             {
                 middle += el.Route[i] + "---";
             }
-            middle = middle.Remove(middle.Length - 3, 3);
+            if (middle.Length > 0) middle = middle.Remove(middle.Length - 3, 3);
             ret += middle + "|";
             ret += el.Places[0].ToString() + "/" + el.Places[1].ToString() + "|" + el.StartTime.ToString() + "|" + ((int)((el.EndTime - el.StartTime).TotalHours)).ToString() + "h";
 
             label2.Text = ret;
+            comboBox1.SelectedIndex = 1;
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            cll.oprt.BuyTicket(cll.selectedWay, int.Parse(textBox1.Text), 0);
+            int tickets = 0;
+            if (!int.TryParse(textBox1.Text,out tickets)) return;
+            var dl = new onetimeDialog();
+            var res = dl.ShowDialog();
+            if (res != DialogResult.OK)
+            {
+                var er = new Error();
+                er.ShowDialog();
+                return;
+            }
+            cll.oprt.BuyTicket(cll.selectedWay, tickets, comboBox1.SelectedIndex);
             cll.updTable();
             this.Close();
         }

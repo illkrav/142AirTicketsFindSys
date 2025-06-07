@@ -1,6 +1,6 @@
 ﻿namespace _142AirTicketsFindSys.Forms
 {
-    partial class onetimeDialog
+    partial class Error
     {
         /// <summary>
         /// Required designer variable.
@@ -30,48 +30,35 @@
         {
             label1 = new Label();
             button1 = new Button();
-            button2 = new Button();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(168, 9);
+            label1.Location = new Point(117, 25);
             label1.Name = "label1";
-            label1.Size = new Size(79, 15);
+            label1.Size = new Size(102, 15);
             label1.TabIndex = 0;
-            label1.Text = "Підтвердити?";
+            label1.Text = "Помилка у даних";
             // 
             // button1
             // 
-            button1.Location = new Point(15, 100);
+            button1.Location = new Point(103, 106);
             button1.Name = "button1";
-            button1.Size = new Size(123, 41);
+            button1.Size = new Size(136, 44);
             button1.TabIndex = 1;
-            button1.Text = "Yes";
+            button1.Text = "OK";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
             // 
-            // button2
-            // 
-            button2.Location = new Point(282, 100);
-            button2.Name = "button2";
-            button2.Size = new Size(123, 41);
-            button2.TabIndex = 2;
-            button2.Text = "No";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
-            // 
-            // onetimeDialog
+            // Error
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(417, 158);
-            Controls.Add(button2);
+            ClientSize = new Size(340, 171);
             Controls.Add(button1);
             Controls.Add(label1);
-            Name = "onetimeDialog";
-            Text = "onetimeDialog";
+            Name = "Error";
+            Text = "Error";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -80,6 +67,5 @@
 
         private Label label1;
         private Button button1;
-        private Button button2;
     }
 }

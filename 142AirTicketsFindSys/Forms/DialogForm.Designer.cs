@@ -54,6 +54,7 @@
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(626, 23);
             comboBox1.TabIndex = 0;
+            comboBox1.SelectionChangeCommitted += comboBox1_SelectionChangeCommitted;
             // 
             // button1
             // 
